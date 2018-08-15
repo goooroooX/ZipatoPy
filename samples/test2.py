@@ -111,4 +111,3 @@ if not result:
     LOGGER.error("Failed to sync-and-save Zipato!")
     sys.exit(1)
 LOGGER.info("SYNC-SAVE: %s" % result)
-
