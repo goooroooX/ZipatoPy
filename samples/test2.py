@@ -10,8 +10,9 @@
 
 # NOTE: deleting virtual endpoint will not delete device.
 
-USERNAME = 'username'
-PASSWORD = 'password'
+USERNAME = 'someuser'
+PASSWORD = 'somepassword'
+LOCAL    = "http://X.X.X.X:8080/zipato-web/v2/"
 
 import os, sys
 import logging

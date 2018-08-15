@@ -5,11 +5,13 @@
 # 4) request value(s) for specific attribute
 # 5) request history log for specific attribute
 
-USERNAME  = 'username'
-PASSWORD  = 'password'
+USERNAME  = 'someuser'
+PASSWORD  = 'somepassword'
 DEVICE    = "Power Plug Server"
 ENDPOINT  = "Server Room Plug"
 ATTRIBUTE = "CURRENT_CONSUMPTION"
+LOCAL     = "http://X.X.X.X:8080/zipato-web/v2/"
+LOCAL_ATTR= "c562946b-4759-494c-9234-5b74376fdc9e"
 
 import os, sys
 import logging
@@ -58,10 +60,15 @@ if device:
                 attributes = api.get_endpoint_attributes(endpoint)
                 if attributes:
                     for item in attributes:
+                        # NOTE: local API does not return 'name'
+                        if not "name" in item:
+                            LOGGER.error("Attribute name is not available for local API. Use UUID to get value.")
+                            LOGGER.info(api.get_attribute_value(LOCAL_ATTR))
+                            sys.exit(1)
                         if item["name"] == ATTRIBUTE:
                             attribute_uuid = item["uuid"]
                             if attribute_uuid:
                                 # get last attribure value
-                                print(api.get_attribute_value(attribute_uuid))
+                                LOGGER.info(api.get_attribute_value(attribute_uuid))
                                 # get history of attribute values
-                                print(api.get_attribute_log(attribute_uuid))
+                                LOGGER.info(api.get_attribute_log(attribute_uuid))

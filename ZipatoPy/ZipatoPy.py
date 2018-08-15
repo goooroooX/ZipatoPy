@@ -59,6 +59,9 @@ class BaseAPIClient(object):
         self.login      = self.user_login()
         if self.login:
             LOGGER.info("ZipatoPy initialization success.")
+        else:
+            LOGGER.error("Initialization failed!")
+            sys.exit(1)
 
         # initialize internal data structures
         self.devices            = None
@@ -279,6 +282,9 @@ class ZipatoPy(BaseAPIClient):
 
         endpoint = "virtualEndpoints/?category=" + category
         result = self.call_api(endpoint, "POST", data=data)
+        if not result:
+            LOGGER.error("Failed to get virtualEndpoints!")
+            return None
         if not "uuid" in result:
             LOGGER.error("Failed to create virtual endpoint: no UUID defined in POST results: %s" % result)
             return None
