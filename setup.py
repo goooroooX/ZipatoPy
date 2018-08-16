@@ -32,7 +32,7 @@ if sys.version_info < (2, 7):
 from setuptools import setup
 
 packages = [
-    'ZipatoPy',
+    'zipatopy',
     'samples',
 ]
 
@@ -41,7 +41,7 @@ install_requires = []
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-version = ZipatoPy.__version__
+version = zipatopy.__version__
 
 setup(
     name="ZipatoPy",
