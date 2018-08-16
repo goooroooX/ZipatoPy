@@ -24,7 +24,8 @@ These instructions will get you a copy of the project up and running on your loc
 ### Python Version
 
 ```
-Python 2.7+
+Python 2.7
+Python 3.6
 ```
 
 ### Installation
@@ -48,12 +49,14 @@ python test2.py
 
 API initialization for a cloud mode:
 ```
+from zipatopy import ZipatoPy
 api = ZipatoPy(USERNAME, PASSWORD, verbose=True)
 print(api.get_devices())
 ```
 
 API initialization for a local mode:
 ```
+from zipatopy import ZipatoPy
 api = ZipatoPy(USERNAME, PASSWORD, url='http://X.X.X.X:8080/zipato-web/v2/', verbose=True)
 print(api.get_devices())
 ```
