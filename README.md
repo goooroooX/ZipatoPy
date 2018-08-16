@@ -60,7 +60,7 @@ from zipatopy import ZipatoPy
 api = ZipatoPy(USERNAME, PASSWORD, url='http://X.X.X.X:8080/zipato-web/v2/', verbose=True)
 print(api.get_devices())
 ```
-NOTE: local mode is limited comparing to cloud mode, but you will still be able to get attribute values when requesting directly with UUID.
+**NOTE**: local mode is limited comparing to cloud mode, but you will still be able to get attribute values when requesting directly with UUID.
 
 ## Authors
 
