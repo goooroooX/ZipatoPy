@@ -9,6 +9,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+ZipatoPy.egg-info/
+packme.bat
 build/
 develop-eggs/
 dist/

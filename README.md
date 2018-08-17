@@ -14,7 +14,6 @@ Main features:
 * logging and verbose debug
 
 TODO:
-* add to PyPI repository
 * integrate as [Home Assistant](https://www.home-assistant.io/) sensor
 
 ## Getting Started
@@ -30,6 +29,11 @@ Python 3.6
 
 ### Installation
 
+From PyPI repository:
+```
+pip install --upgrade zipatopy
+```
+
 From source:
 ```
 git clone https://github.com/goooroooX/ZipatoPy.git
@@ -37,12 +41,11 @@ git clone https://github.com/goooroooX/ZipatoPy.git
 
 ### Test run
 
-Start with included samples:
+Start with included [samples](https://github.com/goooroooX/ZipatoPy/tree/master/samples):
 * change USERNAME and PASSWORD to your my.zipato.com account information
-* for test1.py change DEVICE, ENDPOINT and ATTRIBUTE
+* for test1.py change also DEVICE, ENDPOINT and ATTRIBUTE
 
 ```
-cd ZipatoPy/samples
 python test1.py
 python test2.py
 ```
@@ -62,7 +65,7 @@ print(api.get_devices())
 ```
 **NOTE**: local mode is limited comparing to cloud mode, but you will still be able to get attribute values when requesting directly with UUID.
 
-## Authors
+## Author
 
 * **Dmitry Nikolaenya** - *code base* - [gooorooo.com](https://gooorooo.com)
 

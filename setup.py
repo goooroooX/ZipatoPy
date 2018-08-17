@@ -33,7 +33,6 @@ from setuptools import setup
 
 packages = [
     'zipatopy',
-    'samples',
 ]
 
 install_requires = []
@@ -41,10 +40,11 @@ install_requires = []
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+import zipatopy
 version = zipatopy.__version__
 
 setup(
-    name="ZipatoPy",
+    name="zipatopy",
     version=version,
     description="The Python library to interact with Zipato smarthome controllers",
     long_description=long_description,
