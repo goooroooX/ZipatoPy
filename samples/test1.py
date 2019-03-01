@@ -63,9 +63,13 @@ if device:
                 attributes = api.get_endpoint_attributes(endpoint)
                 if attributes:
                     for item in attributes:
-                        # NOTE: local API does not return 'name'
-                        if not "name" in item:
-                            LOGGER.error("Attribute name is not available for local API. Use UUID to get value.")
+                        # NOTE: local API does not return 'name', but 'attributeName'
+                        if api.check_local():
+                            a_name = "attributeName"
+                        else:
+                            a_name = "name"
+                        if not a_name in item:
+                            LOGGER.error("Attribute name is not available. Use UUID to get value.")
                             LOGGER.info(api.get_attribute_value(LOCAL_ATTR))
                             sys.exit(1)
                         if item["name"] == ATTRIBUTE:

@@ -5,7 +5,7 @@
 #               https://gooorooo.com            #
 #################################################
 
-# Copyright 2018 Dmitry Nikolaenya
+# Copyright 2019 Dmitry Nikolaenya
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = "0.1"
+__version__ = "0.2"
 
 # "No handler found" warnings suppress, Python 2.7+
 import logging
@@ -61,10 +61,12 @@ LOGGER = logging.getLogger(__name__)
 class BaseAPIClient(object):
 
     def __init__(self, username, password, url = None, verbose = False):
+        self.local_mode = False
         if not url:
             self.url = "https://my.zipato.com:443/zipato-web/v2/"
         else:
-            self.url  = url
+            self.url = url
+            self.local_mode = True
         self.verbose = verbose
         self.username = username
         self.password = password
@@ -209,6 +211,9 @@ class BaseAPIClient(object):
         LOGGER.info("   >> JSON output: %s" % formatted)
 
 class ZipatoPy(BaseAPIClient):
+
+    def check_local(self):
+        return self.local_mode
 
     def get_devices(self):
         # endpoint returns a list of dictionaries
@@ -365,11 +370,11 @@ class ZipatoPy(BaseAPIClient):
 
     def set_attributes_config(self, uuid, data):
         endpoint = "attributes/" + uuid + "/config"
-        return self.call_api(endpoint, "POST", data=data)
+        return self.call_api(endpoint, "PUT", data=data)
 
     def set_attributes_value(self, uuid, data):
         endpoint = "attributes/" + uuid + "/value"
-        return self.call_api(endpoint, "POST", data=data)
+        return self.call_api(endpoint, "PUT", data=data)
 
     def synchronize_and_save(self, wait="false", timeout=30):
         endpoint = "box/saveAndSynchronize?wait=" + wait + "&timeout=" + str(timeout)
