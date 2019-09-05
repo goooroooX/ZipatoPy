@@ -221,6 +221,10 @@ class ZipatoPy(BaseAPIClient):
         self.devices = self.call_api(endpoint, "GET")
         return self.devices
 
+    def get_device_status(self, uuid):
+        endpoint = "devices/" + uuid + "/status"
+        return self.call_api(endpoint, "GET")
+
     def get_device_by_name(self, device_name):
         # return first device found with specific name
         # there can be several devices with the same name
