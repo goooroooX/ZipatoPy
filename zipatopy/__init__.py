@@ -19,7 +19,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = "0.3"
+__version__ = "0.4"
 
 # "No handler found" warnings suppress, Python 2.7+
 import logging
@@ -223,6 +223,10 @@ class ZipatoPy(BaseAPIClient):
 
     def get_device_status(self, uuid):
         endpoint = "devices/" + uuid + "/status"
+        return self.call_api(endpoint, "GET")
+
+    def get_device_config(self, uuid):
+        endpoint = "devices/" + uuid + "/config"
         return self.call_api(endpoint, "GET")
 
     def get_device_by_name(self, device_name):
